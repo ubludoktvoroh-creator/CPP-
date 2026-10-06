@@ -1,4 +1,4 @@
 # CPP
-Rdb-23-1, Yaroslav Chernyshov
+Rdb-23-1, Yaroslav
 
 4б + 2б + 1б + 1б + 1б + 3б + 10б = 22б
