@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
-#include <windows.h>
+#include <clocale>
 using namespace std;
 
 class Item {
@@ -21,80 +21,76 @@ public:
 };
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
 
     vector<Item> all;
-    all.push_back(Item("яблоки", 200));
-    all.push_back(Item("молоко", 120));
-    all.push_back(Item("конфеты", 300));
-    all.push_back(Item("масло", 500));
-    all.push_back(Item("орехи", 1000));
-    all.push_back(Item("колбаса", 350));
-    all.push_back(Item("горчица", 45));
-    all.push_back(Item("хлеб", 50));
-    all.push_back(Item("чай", 100));
-    all.push_back(Item("торт", 650));
+    all.push_back(Item("Р‘РђРќРђРќР«", 200));
+    all.push_back(Item("Р›РРњРћРќР«", 120));
+    all.push_back(Item("РРњР‘РР Р¬", 300));
+    all.push_back(Item("РЇР‘Р›РћРљР", 500));
+    all.push_back(Item("Р“Р РЈРЁР", 1000));
+    all.push_back(Item("РђР‘Р РРљРћРЎР«", 350));
+    all.push_back(Item("РџРћРњРР”РћР Р«", 45));
+    all.push_back(Item("РЈРљР РћРџ", 50));
+    all.push_back(Item("Р’РРќРћ", 100));
+    all.push_back(Item("РўРћР Рў", 650));
 
-    cout << "=== Список товаров ===" << endl;
+    cout << "=== РЎРџРРЎРћРљ РўРћР’РђР РћР’ ===" << endl;
     for (int i = 0; i < all.size(); i++) {
-        cout << i + 1 << ". " << all[i].name << " - " << all[i].price << " руб." << endl;
+        cout << i + 1 << ". " << all[i].name << " - " << all[i].price << " Р РЈР‘." << endl;
     }
 
     vector<Item> items;
     int count;
-    cout << "\nСколько товаров хотите купить? ";
+    cout << "\nРЎРљРћР›Р¬РљРћ РўРћР’РђР РћР’ РҐРћРўРРўР• РљРЈРџРРўР¬? ";
     if (!(cin >> count)) {
-        cout << "Ошибка! Нужно ввести число." << endl;
+        cout << "РћРЁРР‘РљРђ! РќРЈР–РќРћ Р’Р’Р•РЎРўР Р§РРЎР›Рћ." << endl;
         return 1;
     }
 
     if (count < 1) {
-        cout << "Ошибка: нужно хотя бы 1 товар." << endl;
+        cout << "РћРЁРР‘РљРђ: РќРЈР–РќРћ РҐРћРўРЇ Р‘Р« 1 РўРћР’РђР ." << endl;
         return 1;
     }
 
-    cout << "Введите номера товаров через пробел: ";
+    cout << "Р’Р’Р•Р”РРўР• РќРћРњР•Р Рђ РўРћР’РђР РћР’ Р§Р•Р Р•Р— РџР РћР‘Р•Р›: ";
     for (int i = 0; i < count; i++) {
         int num;
         if (!(cin >> num)) {
-            cout << "Ошибка! Нужно ввести число." << endl;
+            cout << "РћРЁРР‘РљРђ! РќРЈР–РќРћ Р’Р’Р•РЎРўР Р§РРЎР›Рћ." << endl;
             return 1;
         }
         if (num >= 1 && num <= all.size()) {
             items.push_back(all[num - 1]);
         } else {
-            cout << "Товар с номером " << num << " не существует. Попробуйте снова." << endl;
+            cout << "РўРћР’РђР  РЎ РќРћРњР•Р РћРњ " << num << " РќР• РЎРЈР©Р•РЎРўР’РЈР•Рў. РџРћРџР РћР‘РЈР™РўР• РЎРќРћР’Рђ." << endl;
             i--;
         }
     }
 
-    // === ВЫБОР: С БОНУСНОЙ КАРТОЙ ИЛИ БЕЗ ===
-    cout << "\n=== Выберите способ оплаты ===" << endl;
-    cout << "1 - Без бонусной карты" << endl;
-    cout << "2 - С бонусной картой" << endl;
-    cout << "Ваш выбор: ";
+    cout << "\n=== Р’Р«Р‘Р•Р РРўР• РЎРџРћРЎРћР‘ РћРџР›РђРўР« ===" << endl;
+    cout << "1 - Р‘Р•Р— Р‘РћРќРЈРЎРќРћР™ РљРђР РўР«" << endl;
+    cout << "2 - РЎ Р‘РћРќРЈРЎРќРћР™ РљРђР РўРћР™" << endl;
+    cout << "Р’РђРЁ Р’Р«Р‘РћР : ";
 
     int mode;
     if (!(cin >> mode)) {
-        cout << "Ошибка! Нужно ввести число." << endl;
+        cout << "РћРЁРР‘РљРђ! РќРЈР–РќРћ Р’Р’Р•РЎРўР Р§РРЎР›Рћ." << endl;
         return 1;
     }
 
     if (mode == 1) {
-        // === БЕЗ БОНУСНОЙ КАРТЫ ===
-        cout << "\n=== ПОКУПКА БЕЗ БОНУСНОЙ КАРТЫ ===" << endl;
+        cout << "\n=== РџРћРљРЈРџРљРђ Р‘Р•Р— Р‘РћРќРЈРЎРќРћР™ РљРђР РўР« ===" << endl;
         float totalSpent = 0;
         for (int i = 0; i < items.size(); i++) {
             totalSpent += items[i].price;
-            cout << "Куплено: " << items[i].name << " за " << items[i].price << " руб." << endl;
+            cout << "РљРЈРџР›Р•РќРћ: " << items[i].name << " Р—Рђ " << items[i].price << " Р РЈР‘." << endl;
         }
-        cout << "Итого потрачено денег: " << totalSpent << " руб." << endl;
-        cout << "Бонусов начислено: 0" << endl;
+        cout << "РРўРћР“Рћ РџРћРўР РђР§Р•РќРћ Р”Р•РќР•Р“: " << totalSpent << " Р РЈР‘." << endl;
+        cout << "Р‘РћРќРЈРЎРћР’ РќРђР§РРЎР›Р•РќРћ: 0" << endl;
     }
     else if (mode == 2) {
-        // === С БОНУСНОЙ КАРТОЙ ===
-        cout << "\n=== ПОКУПКА С БОНУСНОЙ КАРТОЙ ===" << endl;
+        cout << "\n=== РџРћРљРЈРџРљРђ РЎ Р‘РћРќРЈРЎРќРћР™ РљРђР РўРћР™ ===" << endl;
 
         sort(items.begin(), items.end(), [](Item a, Item b) {
             return a.price < b.price;
@@ -106,29 +102,29 @@ int main() {
         for (int i = 0; i < items.size() - 1; i++) {
             totalBonus += items[i].bonus(3);
             totalSpent += items[i].price;
-            cout << "Куплено: " << items[i].name << " за " << items[i].price
-                 << " руб. (бонус +" << items[i].bonus(3) << ")" << endl;
+            cout << "РљРЈРџР›Р•РќРћ: " << items[i].name << " Р—Рђ " << items[i].price
+                 << " Р РЈР‘. (Р‘РћРќРЈРЎ +" << items[i].bonus(3) << ")" << endl;
         }
 
         Item lastItem = items.back();
-        cout << "\nПокупаем последний товар за бонусы: " << lastItem.name
-             << " за " << lastItem.price << " руб." << endl;
+        cout << "\nРџРћРљРЈРџРђР•Рњ РџРћРЎР›Р•Р”РќРР™ РўРћР’РђР  Р—Рђ Р‘РћРќРЈРЎР«: " << lastItem.name
+             << " Р—Рђ " << lastItem.price << " Р РЈР‘." << endl;
 
         if (totalBonus >= lastItem.price) {
             totalBonus -= lastItem.price;
-            cout << "Оплачено бонусами." << endl;
+            cout << "РћРџР›РђР§Р•РќРћ Р‘РћРќРЈРЎРђРњР." << endl;
         } else {
             float doplata = lastItem.price - totalBonus;
             totalSpent += doplata;
             totalBonus = 0;
-            cout << "Бонусов не хватило. Доплата: " << doplata << " руб." << endl;
+            cout << "Р‘РћРќРЈРЎРћР’ РќР• РҐР’РђРўРР›Рћ. Р”РћРџР›РђРўРђ: " << doplata << " Р РЈР‘." << endl;
         }
 
-        cout << "Итого потрачено денег: " << totalSpent << " руб." << endl;
-        cout << "Остаток бонусов: " << totalBonus << endl;
+        cout << "РРўРћР“Рћ РџРћРўР РђР§Р•РќРћ Р”Р•РќР•Р“: " << totalSpent << " Р РЈР‘." << endl;
+        cout << "РћРЎРўРђРўРћРљ Р‘РћРќРЈРЎРћР’: " << totalBonus << endl;
     }
     else {
-        cout << "Неверный выбор. Программа завершена." << endl;
+        cout << "РќР•Р’Р•Р РќР«Р™ Р’Р«Р‘РћР . РџР РћР“Р РђРњРњРђ Р—РђР’Р•Р РЁР•РќРђ." << endl;
         return 1;
     }
 
