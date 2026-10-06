@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
+#include <clocale>
 using namespace std;
 
 string get_day_of_week(int d) {
@@ -25,16 +25,15 @@ string get_day_of_week(int d) {
 
     total_days += (day - 1);
 
-    string days[] = {"четверг", "пятница", "суббота", "воскресенье", "понедельник", "вторник", "среда"};
+    string days[] = {"С‡РµС‚РІРµСЂРі", "РїСЏС‚РЅРёС†Р°", "СЃСѓР±Р±РѕС‚Р°", "РІРѕСЃРєСЂРµСЃРµРЅСЊРµ", "РїРѕРЅРµРґРµР»СЊРЅРёРє", "РІС‚РѕСЂРЅРёРє", "СЃСЂРµРґР°"};
     return days[total_days % 7];
 }
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
 
     int d;
-    cout << "Введите дату в формате ДДММГГ: ";
+    cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ РІ С„РѕСЂРјР°С‚Рµ Р”Р”РњРњР“Р“: ";
     cin >> d;
 
     int day = d / 10000;
@@ -51,4 +50,5 @@ int main() {
     cout << day << "." << month << "." << full_year << " " << get_day_of_week(d) << endl;
 
     return 0;
+}
 }
