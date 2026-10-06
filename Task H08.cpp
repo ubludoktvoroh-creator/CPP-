@@ -30,8 +30,8 @@ string get_day_of_week(int d) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Russian");
-
+setlocale(0,"Russian");
+    
     int d;
     cout << "Введите дату в формате ДДММГГ: ";
     cin >> d;
