@@ -1,5 +1,5 @@
 #include <iostream>
-#include <windows.h>
+#include <clocale>
 using namespace std;
 
 class CreditCard {
@@ -14,22 +14,21 @@ public:
 
     void Put(float V) {
         Balance += V;
-        cout << "Ïîïîëíåíèå: +" << V << " ðóá. Áàëàíñ: " << Balance << " ðóá." << endl;
+        cout << "ÐŸÐ¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ: +" << V << " Ñ€ÑƒÐ±. Ð‘Ð°Ð»Ð°Ð½Ñ: " << Balance << " Ñ€ÑƒÐ±." << endl;
     }
 
     void Take(float V) {
         if (V > Balance) {
-            cout << "Íåäîñòàòî÷íî ñðåäñòâ! Áàëàíñ: " << Balance << " ðóá." << endl;
+            cout << "ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ ÑÑ€ÐµÐ´ÑÑ‚Ð²! Ð‘Ð°Ð»Ð°Ð½Ñ: " << Balance << " Ñ€ÑƒÐ±." << endl;
         } else {
             Balance -= V;
-            cout << "Ñíÿòèå: -" << V << " ðóá. Áàëàíñ: " << Balance << " ðóá." << endl;
+            cout << "Ð¡Ð½ÑÑ‚Ð¸Ðµ: -" << V << " Ñ€ÑƒÐ±. Ð‘Ð°Ð»Ð°Ð½Ñ: " << Balance << " Ñ€ÑƒÐ±." << endl;
         }
     }
 };
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
 
     CreditCard card(1234, 0);
     CreditCard* ptr = &card;
@@ -37,39 +36,39 @@ int main() {
     int choice;
     float amount;
 
-    cout << "Íîìåð êàðòû: **** **** **** " << ptr->Number << endl;
-    cout << "Áàëàíñ: " << ptr->Balance << " ðóá." << endl;
+    cout << "ÐÐ¾Ð¼ÐµÑ€ ÐºÐ°Ñ€Ñ‚Ñ‹: **** **** **** " << ptr->Number << endl;
+    cout << "Ð‘Ð°Ð»Ð°Ð½Ñ: " << ptr->Balance << " Ñ€ÑƒÐ±." << endl;
 
     while (true) {
-        cout << "\n--- Ìåíþ ---" << endl;
-        cout << "1 - Ïîïîëíèòü" << endl;
-        cout << "2 - Ñíÿòü" << endl;
-        cout << "3 - Ïîñìîòðåòü áàëàíñ" << endl;
-        cout << "0 - Âûõîä" << endl;
-        cout << "Âûáîð: ";
+        cout << "\n--- ÐœÐµÐ½ÑŽ ---" << endl;
+        cout << "1 - ÐŸÐ¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ" << endl;
+        cout << "2 - Ð¡Ð½ÑÑ‚ÑŒ" << endl;
+        cout << "3 - ÐŸÐ¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ Ð±Ð°Ð»Ð°Ð½Ñ" << endl;
+        cout << "0 - Ð’Ñ‹Ñ…Ð¾Ð´" << endl;
+        cout << "Ð’Ñ‹Ð±Ð¾Ñ€: ";
         cin >> choice;
 
         if (choice == 0) {
-            cout << "Äî ñâèäàíèÿ!" << endl;
+            cout << "Ð”Ð¾ ÑÐ²Ð¸Ð´Ð°Ð½Ð¸Ñ!" << endl;
             break;
         }
 
         if (choice == 1) {
-            cout << "Ââåäèòå ñóììó äëÿ ïîïîëíåíèÿ: ";
+            cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑƒÐ¼Ð¼Ñƒ Ð´Ð»Ñ Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ: ";
             cin >> amount;
             ptr->Put(amount);
         }
         else if (choice == 2) {
-            cout << "Ââåäèòå ñóììó äëÿ ñíÿòèÿ: ";
+            cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÑƒÐ¼Ð¼Ñƒ Ð´Ð»Ñ ÑÐ½ÑÑ‚Ð¸Ñ: ";
             cin >> amount;
             ptr->Take(amount);
         }
         else if (choice == 3) {
-            cout << "Íîìåð êàðòû: **** **** **** " << ptr->Number << endl;
-            cout << "Òåêóùèé áàëàíñ: " << ptr->Balance << " ðóá." << endl;
+            cout << "ÐÐ¾Ð¼ÐµÑ€ ÐºÐ°Ñ€Ñ‚Ñ‹: **** **** **** " << ptr->Number << endl;
+            cout << "Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð±Ð°Ð»Ð°Ð½Ñ: " << ptr->Balance << " Ñ€ÑƒÐ±." << endl;
         }
         else {
-            cout << "Íåâåðíûé âûáîð. Ïîïðîáóéòå ñíîâà." << endl;
+            cout << "ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÑÐ½Ð¾Ð²Ð°." << endl;
         }
     }
 
