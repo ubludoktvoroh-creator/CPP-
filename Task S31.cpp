@@ -1,23 +1,22 @@
 #include <iostream>
 #include <string>
-#include <windows.h>
+#include <clocale>
 using namespace std;
 
 int main() {
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    setlocale(LC_ALL, "Russian");
 
-    string digits[10] = {"ноль", "один", "два", "три", "четыре",
-                         "пять", "шесть", "семь", "восемь", "девять"};
+    string digits[10] = {"РЅРѕР»СЊ", "РѕРґРёРЅ", "РґРІР°", "С‚СЂРё", "С‡РµС‚С‹СЂРµ",
+                         "РїСЏС‚СЊ", "С€РµСЃС‚СЊ", "СЃРµРјСЊ", "РІРѕСЃРµРјСЊ", "РґРµРІСЏС‚СЊ"};
 
     int num;
-    cout << "Введите цифру от 0 до 9: ";
+    cout << "Р’РІРµРґРёС‚Рµ С†РёС„СЂСѓ РѕС‚ 0 РґРѕ 9: ";
     cin >> num;
 
     if (num >= 0 && num <= 9) {
-        cout << "Название: " << digits[num] << endl;
+        cout << "РќР°Р·РІР°РЅРёРµ: " << digits[num] << endl;
     } else {
-        cout << "Ошибка! Введите цифру от 0 до 9." << endl;
+        cout << "РћС€РёР±РєР°! Р’РІРµРґРёС‚Рµ С†РёС„СЂСѓ РѕС‚ 0 РґРѕ 9." << endl;
     }
 
     return 0;
