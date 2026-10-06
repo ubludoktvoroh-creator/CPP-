@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(0,"Russian");
 
     string digits[10] = {"ноль", "один", "два", "три", "четыре",
                          "пять", "шесть", "семь", "восемь", "девять"};
