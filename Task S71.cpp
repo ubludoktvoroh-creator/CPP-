@@ -28,7 +28,7 @@ public:
 };
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(0, "Russian");
 
     CreditCard card(1234, 0);
     CreditCard* ptr = &card;
