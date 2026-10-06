@@ -21,7 +21,7 @@ public:
 };
 
 int main() {
-    setlocale(LC_ALL, "Russian");
+    setlocale(0, "Russian");
 
     vector<Item> all;
     all.push_back(Item("БАНАНЫ", 200));
